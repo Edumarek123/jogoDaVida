@@ -37,7 +37,7 @@ int main() {
   do{
     printar(mundo);
     mundo=gera_novoFrame(mundo);
-    Sleep(200);
+    Sleep(20);
   }while(verifica_exterminio(mundo));
 
   printar(mundo);
