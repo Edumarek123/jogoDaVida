@@ -1,7 +1,7 @@
 cd *YOUR PATH\jogoDaVida*
 
-gcc -o main main.c
+g++ -o main main.c
 
-main.exe
+./main
 
 pause
