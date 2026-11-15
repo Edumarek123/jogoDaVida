@@ -1,33 +1,75 @@
+<div align="center">
+
 # Conway's Game of Life
 
-A C++ implementation of Conway's Game of Life, the cellular automaton devised by mathematician John Horton Conway.
+**A C++ implementation of Conway's cellular automaton.**
+
+![Language](https://img.shields.io/badge/language-C%2B%2B-00599C?logo=cplusplus&logoColor=white)
+![Topic](https://img.shields.io/badge/topic-cellular%20automata-6f42c1)
+![Status](https://img.shields.io/badge/status-learning%20project-lightgrey)
+
+</div>
 
 ## Overview
 
-The program simulates a grid of cells that evolve over discrete generations according to the Game of Life rules. The grid dimensions can be configured through the program's parameters.
+This project implements Conway's Game of Life, a cellular automaton in which a grid evolves over discrete generations according to a small set of local rules.
+
+Each cell is either alive or dead. Its state in the next generation depends on the number of neighboring live cells, producing patterns that can stabilize, oscillate, or move across the grid.
 
 ## Configuration
 
-The original project notes refer to the following parameters:
+The original implementation exposes grid-size parameters:
 
-- `Tamanho_X` — grid width
-- `Tamanho_Y` — grid height
+| Parameter | Meaning |
+|---|---|
+| `Tamanho_X` | Grid width |
+| `Tamanho_Y` | Grid height |
 
-The terminal font size may need to be reduced when using the text-based display.
+The simulation is displayed in the terminal. A small terminal font may be necessary to fit larger grids on screen.
 
-## Technologies
+## Requirements
 
-- C++
+- C++ compiler
+- Linux terminal for the documented terminal-based workflow
 
-## Repository contents
+## Build and run
 
-- `main.cpp` — simulation implementation
-- `run.bat` — helper script included in the repository
+The repository contains a helper script named `run.bat`. Its commands and paths should be checked for the environment in which you intend to run the program.
 
-## Purpose
+For a manual build, compile the source file:
 
-A compact exercise in cellular automata, simulation logic, and terminal rendering.
+```bash
+g++ main.cpp -o game_of_life
+./game_of_life
+```
 
-## Status
+Adjust the compiler command if the source requires additional libraries or flags.
 
-Educational project.
+## Repository layout
+
+```text
+.
+├── main.cpp
+├── run.bat
+└── README.md
+```
+
+## Concepts explored
+
+- Cellular automata
+- Grid and matrix representation
+- Neighbor counting
+- Discrete-time simulation
+- Terminal rendering
+
+## Project status
+
+Educational implementation. The repository is intended as a compact study of cellular automata rather than a production simulation framework.
+
+## References
+
+- [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+
+## License
+
+No license file was identified in the repository at the time of writing. Contact the author before redistributing or reusing the project.
