@@ -2,74 +2,87 @@
 
 # Conway's Game of Life
 
-**A C++ implementation of Conway's cellular automaton.**
+**A terminal-based C++ simulation of a cellular automaton.**
 
-![Language](https://img.shields.io/badge/language-C%2B%2B-00599C?logo=cplusplus&logoColor=white)
-![Topic](https://img.shields.io/badge/topic-cellular%20automata-6f42c1)
-![Status](https://img.shields.io/badge/status-learning%20project-lightgrey)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white)
+![Concept](https://img.shields.io/badge/concept-cellular%20automata-6f42c1)
+![Platform](https://img.shields.io/badge/platform-Linux%20terminal-333)
 
 </div>
 
+## Contents
+
+- [Overview](#overview)
+- [Rules](#rules)
+- [Simulation model](#simulation-model)
+- [Requirements](#requirements)
+- [Build and run](#build-and-run)
+- [Configuration](#configuration)
+- [Known implementation details](#known-implementation-details)
+- [License](#license)
+
 ## Overview
 
-This project implements Conway's Game of Life, a cellular automaton in which a grid evolves over discrete generations according to a small set of local rules.
+This project implements Conway's Game of Life in C++. A two-dimensional grid evolves in discrete generations: each cell's next state depends on the number of live cells in its neighborhood.
 
-Each cell is either alive or dead. Its state in the next generation depends on the number of neighboring live cells, producing patterns that can stabilize, oscillate, or move across the grid.
+The simulation renders the grid in a terminal and generates an initial population randomly.
 
-## Configuration
+## Rules
 
-The original implementation exposes grid-size parameters:
+For each generation:
 
-| Parameter | Meaning |
-|---|---|
-| `Tamanho_X` | Grid width |
-| `Tamanho_Y` | Grid height |
+1. A live cell with fewer than two live neighbors dies.
+2. A live cell with two or three live neighbors survives.
+3. A live cell with more than three live neighbors dies.
+4. A dead cell with exactly three live neighbors becomes alive.
 
-The simulation is displayed in the terminal. A small terminal font may be necessary to fit larger grids on screen.
+## Simulation model
+
+```mermaid
+flowchart TD
+    A[Allocate grid] --> B[Generate initial population]
+    B --> C[Print current generation]
+    C --> D[Count neighbors]
+    D --> E[Apply Life rules]
+    E --> F[Create next generation]
+    F --> G{Any live cells remain?}
+    G -->|Yes| C
+    G -->|No| H[Print final generation]
+```
+
+The neighbor calculation wraps coordinates at the grid edges, producing a toroidal world rather than a grid with dead borders.
 
 ## Requirements
 
 - C++ compiler
-- Linux terminal for the documented terminal-based workflow
+- Linux/POSIX environment (the source uses `unistd.h`, `usleep()`, and `clear`)
 
 ## Build and run
 
-The repository contains a helper script named `run.bat`. Its commands and paths should be checked for the environment in which you intend to run the program.
-
-For a manual build, compile the source file:
-
 ```bash
-g++ main.cpp -o game_of_life
+git clone https://github.com/Edumarek123/jogoDaVida.git
+cd jogoDaVida
+g++ -std=c++11 -O2 -Wall -Wextra main.cpp -o game_of_life
 ./game_of_life
 ```
 
-Adjust the compiler command if the source requires additional libraries or flags.
+The source includes a delay of approximately 100 ms between generations.
 
-## Repository layout
+## Configuration
 
-```text
-.
-├── main.cpp
-├── run.bat
-└── README.md
-```
+The grid dimensions are currently defined in `main.cpp`:
 
-## Concepts explored
+| Variable | Current value | Meaning |
+|---|---:|---|
+| `Tamanho_X` | 105 | Number of rows |
+| `Tamanho_Y` | 585 | Number of columns |
 
-- Cellular automata
-- Grid and matrix representation
-- Neighbor counting
-- Discrete-time simulation
-- Terminal rendering
+Change these values before compiling to experiment with different grid sizes. Large dimensions require a terminal capable of displaying the output.
 
-## Project status
+## Known implementation details
 
-Educational implementation. The repository is intended as a compact study of cellular automata rather than a production simulation framework.
-
-## References
-
-- [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+The current implementation uses dynamically allocated matrices and a random initialization routine. The initialization and memory-management code would benefit from further review before the simulation is used as a robust or long-running program.
 
 ## License
 
-No license file was identified in the repository at the time of writing. Contact the author before redistributing or reusing the project.
+No `LICENSE` file is currently included. Unless a license is added, reuse and redistribution permissions are not granted by this repository.
