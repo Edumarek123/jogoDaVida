@@ -1,20 +1,33 @@
-# jogoDaVida
+# Conway's Game of Life
 
-Algoritímo de automato celular desenvolvido por John Horton Conway. 
+A C++ implementation of Conway's Game of Life, the cellular automaton devised by mathematician John Horton Conway.
 
-Editar o arquivo run, e colocar o path até a pasta como indicado.
+## Overview
 
-Use Linux, coloque a fonte da sua letra no terminal para 2 ou 1, ajuste os parametros Tamanho_X e Tamanho_y.
+The program simulates a grid of cells that evolve over discrete generations according to the Game of Life rules. The grid dimensions can be configured through the program's parameters.
 
-----------------------------------------------------//----------------------------------------------------
+## Configuration
 
-Cellular automaton algorithm developed by John Horton Conway.
+The original project notes refer to the following parameters:
 
-Customize the path in the run file.
+- `Tamanho_X` — grid width
+- `Tamanho_Y` — grid height
 
-Ajust your linux terminal with a small font size, 1 or 2 preferable, and the variables Tamanho_X e Tamanho_Y.
+The terminal font size may need to be reduced when using the text-based display.
 
-----------------------------------------------------//----------------------------------------------------
+## Technologies
 
-Autor(author): Eduaro Marek.
-Data(date): 07/2021.
+- C++
+
+## Repository contents
+
+- `main.cpp` — simulation implementation
+- `run.bat` — helper script included in the repository
+
+## Purpose
+
+A compact exercise in cellular automata, simulation logic, and terminal rendering.
+
+## Status
+
+Educational project.
